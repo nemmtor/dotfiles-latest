@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Tokyo Night Storm, matches ~/.config/wezterm/lua/theme.lua
+BG=0xf024283b
+FG=0xffc0caf5
+MUTED=0xff545c7e
+ACCENT=0xff7aa2f7
+DARK=0xff1f2335
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+# height must match external_bar in ~/.config/yabai/yabairc
+# transparent bar, the islands (brackets at the bottom) carry the background;
+# side padding matches yabai's left/right_padding so islands line up with windows
+sketchybar --bar position=top height=32 color=0x00000000 padding_left=8 padding_right=8
+
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="Hack Nerd Font:Bold:16.0"
+  label.font="Hack Nerd Font:Bold:13.0"
+  icon.color=$FG
+  label.color=$FG
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+)
+sketchybar --default "${default[@]}"
+
+# click switches space via ctrl+N (space.sh), `yabai -m space --focus` needs the scripting addition (SIP off)
+for sid in 1 2 3 4 5 6 7 8 9 10; do
+  space=(
+    space="$sid"
+    icon="$sid"
+    icon.color=$MUTED
+    icon.highlight_color=$DARK
+    icon.padding_left=8
+    icon.padding_right=8
+    background.color=$ACCENT
+    background.corner_radius=6
+    background.height=22
+    background.drawing=off
+    label.font="sketchybar-app-font:Regular:14.0"
+    label.color=$MUTED
+    label.highlight_color=$DARK
+    label.padding_left=0
+    label.padding_right=10
+    label.y_offset=-1
+    label.drawing=off
+    script="$PLUGIN_DIR/space.sh"
+  )
+  sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}" --subscribe space."$sid" mouse.clicked
+done
+
+# app icons per space, sets the labels of the space items above
+sketchybar --add item space_windows left \
+           --set space_windows drawing=off script="$PLUGIN_DIR/space_windows.sh" \
+           --subscribe space_windows space_windows_change
+
+sketchybar --add item front_app left \
+           --set front_app icon.drawing=off padding_left=10 padding_right=10 script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+sketchybar --add item date right \
+           --set date update_freq=60 icon.drawing=off padding_right=10 \
+                      script="TZ=Europe/Warsaw FORMAT=%d.%m.%Y $PLUGIN_DIR/clock.sh" \
+           --add item clock right \
+           --set clock update_freq=10 icon=🇵🇱 script="TZ=Europe/Warsaw FORMAT=%H:%M $PLUGIN_DIR/clock.sh" \
+           --add item clock_ny right \
+           --set clock_ny update_freq=10 icon=🇺🇸 script="TZ=America/New_York FORMAT=%H:%M $PLUGIN_DIR/clock.sh" \
+           --add item volume right \
+           --set volume icon.color=$ACCENT script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --add item show_desktop right \
+           --set show_desktop icon=󰍹 icon.color=$ACCENT label.drawing=off click_script="yabai -m space --toggle show-desktop" \
+           --add item yabai right \
+           --set yabai icon.color=$ACCENT script="$PLUGIN_DIR/yabai.sh" \
+           --subscribe yabai space_change mouse.clicked
+
+island=(
+  background.color=$BG
+  background.corner_radius=10
+  background.height=28
+  background.border_width=1
+  background.border_color=0xff414868
+)
+sketchybar --add bracket left_island '/space\..*/' front_app --set left_island "${island[@]}" \
+           --add bracket right_island yabai show_desktop volume clock_ny clock date --set right_island "${island[@]}"
+
+sketchybar --update

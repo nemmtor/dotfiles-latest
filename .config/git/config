@@ -1,0 +1,18 @@
+[user]
+	name = nemmtor
+	email = kacper0witas@gmail.com
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[core]
+	editor = nvim
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[filter "strip-automode"]
+	clean = jq 'del(.autoMode)'
+	required = true

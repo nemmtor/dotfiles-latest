@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp",
+        "headers": {
+          "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}"
+        }
+      },
+      "linear-server": {
+        "type": "remote",
+        "url": "https://mcp.linear.app/mcp"
+      },
+      "betterstack": {
+        "type": "remote",
+        "url": "https://mcp.betterstack.com"
+      },
+      "circleci-mcp-server": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@circleci/mcp-server-circleci@latest"
+        ],
+        "environment": {
+          "CIRCLECI_TOKEN": "{env:CIRCLECI_TOKEN}"
+        }
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "headers": {
+          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+        }
+      }
+    }
+  }
+}

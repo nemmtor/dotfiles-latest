@@ -1,0 +1,58 @@
+*
+!.gitignore
+!.gitattributes
+!README.md
+!.config
+!.config/nvim
+!.config/nvim/**
+!.config/wezterm
+!.config/wezterm/**
+!.config/fish
+!.config/fish/config.fish
+!.config/fish/fish_plugins
+!.config/fish/completions
+!.config/fish/completions/pnpm.fish
+!.config/fish/custom
+!.config/fish/custom/*
+!.config/herdr
+!.config/herdr/config.toml
+!.config/.editorconfig
+!.config/git
+!.config/git/config
+!.config/git/ignore
+!.config/mise
+!.config/mise/config.toml
+!.config/direnv
+!.config/direnv/direnvrc
+!.config/yabai
+!.config/yabai/yabairc
+!.config/sketchybar
+!.config/sketchybar/**
+!.config/borders
+!.config/borders/bordersrc
+!.config/opencode
+!.config/opencode/AGENTS.md
+!.config/opencode/opencode.json
+!.codex
+!.codex/AGENTS.md
+!.claude
+!.claude/commands
+!.claude/commands/**
+!.claude/CLAUDE.md
+!.claude/settings.json
+!.claude/mcp.json
+!.claude/skills
+!.claude/skills/**
+# Account-synced skills may contain private workspace data.
+/.claude/skills/synced/
+/.claude/skills/.trash/
+# Shared skills for claude/codex/opencode; ~/.claude/skills/* symlinks here.
+!.agents
+!.agents/AGENTS.md
+!.agents/.skill-lock.json
+!.agents/skills
+!.agents/skills/**
+!Library
+!Library/Application\ Support
+!Library/Application\ Support/lazygit
+!Library/Application\ Support/lazygit/config.yml

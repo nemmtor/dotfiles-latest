@@ -1,0 +1,3 @@
+# Claude's auto mode setup writes project-specific context into autoMode; keep it local.
+# shortcut: a pull that changes settings.json drops the local autoMode block; re-run auto mode setup after.
+.claude/settings.json filter=strip-automode
