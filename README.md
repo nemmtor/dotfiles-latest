@@ -52,6 +52,8 @@ npx skills add <owner/repo> -g -a claude-code -a codex -a opencode -s <skill>
 
 For a local skill, put it in `~/.agents/skills/<name>` and run `ln -s ../../.agents/skills/<name> ~/.claude/skills/<name>`.
 
+Modularity review/design follow this shared layout. OpenCode slash commands live in `~/.config/opencode/commands`. Their upstream workflows and HTML template are vendored under `~/.agents/skills/modularity-review/references/upstream`, so a fresh checkout needs no extra download.
+
 Global agent rules live in `~/.agents/AGENTS.md`, symlinked as `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` and `~/.config/opencode/AGENTS.md`.
 
 7. AI agents and MCP servers:

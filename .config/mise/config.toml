@@ -1,6 +1,8 @@
 [tools]
 node = "lts"
+# mise drives rustup; rust-analyzer comes from rustup so it matches the toolchain (clippy/rustfmt ship with default profile)
+rust = { version = "stable", components = ["rust-analyzer"] }
 
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "rust"]
 npm.package_manager = "npm"
