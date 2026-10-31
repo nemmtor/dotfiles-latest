@@ -27,7 +27,6 @@ vim.diagnostic.config({
     source = true,
     header = "",
     prefix = "",
-    focusable = false,
     style = "minimal",
   },
 })

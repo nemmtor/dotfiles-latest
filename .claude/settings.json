@@ -21,12 +21,13 @@
     ],
     "deny": []
   },
-  "model": "opus",
+  "model": "fable",
   "enabledPlugins": {
     "figma@claude-plugins-official": true,
     "caveman@caveman": true,
     "ponytail@ponytail": true,
-    "modularity@vladikk-modularity": true
+    "modularity@vladikk-modularity": true,
+    "mcp@forgegui": true
   },
   "extraKnownMarketplaces": {
     "caveman": {
@@ -46,6 +47,12 @@
         "source": "github",
         "repo": "vladikk/modularity"
       }
+    },
+    "forgegui": {
+      "source": {
+        "source": "github",
+        "repo": "elwinhe/forgegui-plugins"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
@@ -55,11 +62,15 @@
       "effortLevel": "high"
     },
     "claude-opus-5-5": {
+      "effortLevel": "high"
+    },
+    "claude-fable-5-2": {
       "effortLevel": "xhigh"
     }
   },
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "switchModelsOnFlag": true,
   "skipAutoPermissionPrompt": true
 }

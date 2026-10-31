@@ -14,6 +14,7 @@ Uses native `vim.pack` and `vim.lsp.config` on the installed Neovim development 
 Add plugins in `lua/plugins/init.lua`, then require their config there.
 Add Mason tools in `lua/plugins/mason.lua`; installation alone doesn't enable an LSP server.
 Configure and enable servers in `lua/config/lsp/init.lua`.
+Rust tooling (rust-analyzer, clippy, rustfmt) comes from the rustup toolchain that mise installs, not Mason.
 For efm, add a language in `lua/config/lsp/efm.lua`; filetypes are derived automatically.
 
 Restart Neovim after edits: `require()` caches modules, so sourcing `init.lua` won't reload them.
