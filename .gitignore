@@ -33,6 +33,8 @@
 !.config/opencode
 !.config/opencode/AGENTS.md
 !.config/opencode/opencode.json
+!.config/opencode/commands
+!.config/opencode/commands/**
 !.codex
 !.codex/AGENTS.md
 !.claude
