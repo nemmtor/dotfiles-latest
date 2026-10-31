@@ -21,7 +21,7 @@
     ],
     "deny": []
   },
-  "model": "opus",
+  "model": "fable",
   "enabledPlugins": {
     "figma@claude-plugins-official": true,
     "caveman@caveman": true,

@@ -5,6 +5,10 @@ vim.keymap.set("n", "<leader>th", function()
 end, { desc = "Toggle inlay hints" })
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
+-- Second press (or first press after ]d) focuses the float so text can be yanked; q closes it.
+vim.keymap.set("n", "<leader>d", function()
+  vim.diagnostic.open_float({ scope = "cursor" })
+end, { desc = "Show / focus diagnostic float" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),

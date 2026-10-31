@@ -16,3 +16,4 @@
 [filter "strip-automode"]
 	clean = jq 'del(.autoMode)'
 	required = true
+	smudge = cat

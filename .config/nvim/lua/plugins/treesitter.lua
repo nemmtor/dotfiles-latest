@@ -17,6 +17,7 @@ local ensure_installed = {
   "yaml",
   "regex",
   "bash",
+  "rust",
 }
 
 local config = require("nvim-treesitter.config")

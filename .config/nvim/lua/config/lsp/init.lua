@@ -20,6 +20,15 @@ vim.lsp.config("jsonls", {
   init_options = { provideFormatter = false },
 })
 
+-- rust-analyzer is a rustup component (installed by mise), not a Mason package, so it matches the toolchain.
+vim.lsp.config("rust_analyzer", {
+  settings = {
+    ["rust-analyzer"] = {
+      check = { command = "clippy" },
+    },
+  },
+})
+
 require("config.lsp.typescript")
 require("config.lsp.efm")
 
@@ -33,5 +42,6 @@ vim.lsp.enable({
   -- oxlint/oxfmt require project config markers, coexisting with eslint/prettier elsewhere.
   "oxlint",
   "oxfmt",
+  "rust_analyzer",
   "efm",
 })
